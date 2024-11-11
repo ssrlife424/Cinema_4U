@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const BannerHome = () => {
   const bannerData = useSelector((state) => state.movieData.bannerData);
@@ -32,9 +33,12 @@ const BannerHome = () => {
     <section className="w-full h-full">
       <div className="flex min-h-full max-h-[95vh] overflow-hidden ">
         {bannerData.map((data, index) => {
-          {/* console.log("data", data); */}
+          {
+            /* console.log("data", data); */
+          }
           return (
-            <div key={data.id + "bannerHome"+ index}
+            <div
+              key={data.id + "bannerHome" + index}
               className="min-w-full min-h-[450px] lg:min-h-full overflow-hidden relative group transition-all"
               style={{ transform: `translateX(-${currentImage * 100}%)` }}
             >
@@ -74,9 +78,11 @@ const BannerHome = () => {
                     <span>|</span>
                     <p>View: {Number(data.popularity).toFixed(0)}</p>
                   </div>
-                  <button className="px-4 py-2 mt-4 font-bold text-black transition-all bg-white rounded shadow-md hover:bg-gradient-to-t from-red-100 to-orange-500 hover:scale-105">
-                    Play Now
-                  </button>
+                  <Link to={"/" + data?.media_type + "/" + data.id}>
+                    <button className="px-4 py-2 mt-4 font-bold text-black transition-all bg-white rounded shadow-md hover:bg-gradient-to-t from-red-100 to-orange-500 hover:scale-105">
+                      Play Now
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
